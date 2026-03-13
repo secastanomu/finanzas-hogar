@@ -14,7 +14,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
- 
+
 .header{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);padding:16px 16px 0;position:sticky;top:0;z-index:100;box-shadow:0 4px 30px rgba(0,0,0,.5);}
 .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .logo{display:flex;align-items:center;gap:10px;}
@@ -31,14 +31,14 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .nav-tabs::-webkit-scrollbar{display:none;}
 .nav-tab{padding:10px 16px;font-size:13px;font-weight:500;color:var(--text2);border:none;background:none;font-family:'Sora',sans-serif;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
 .nav-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
- 
+
 .main{padding:16px;max-width:600px;margin:0 auto;}
 .section{display:none;}
 .section.active{display:block;}
- 
+
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:14px;}
 .card-title{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;}
- 
+
 .budget-hero{background:linear-gradient(135deg,rgba(124,106,247,.15),rgba(106,247,196,.08));border:1px solid rgba(124,106,247,.2);border-radius:var(--r);padding:22px;margin-bottom:14px;text-align:center;}
 .budget-amount{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;margin-bottom:3px;}
 .budget-label{font-size:11px;color:var(--text2);margin-bottom:4px;}
@@ -51,17 +51,17 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .progress-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:5px;}
 .progress-bar{height:8px;background:var(--surface2);border-radius:99px;overflow:hidden;}
 .progress-fill{height:100%;border-radius:99px;transition:width .5s;}
- 
+
 .cat-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-bottom:8px;}
 .cat-header{display:flex;align-items:center;justify-content:space-between;}
 .cat-left{display:flex;align-items:center;gap:8px;}
 .cat-bar{margin-top:8px;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
 .cat-bar-fill{height:100%;border-radius:99px;}
- 
+
 .month-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .month-label{font-size:16px;font-weight:700;}
 .month-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px;}
- 
+
 .expense-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
 .expense-item:last-child{border-bottom:none;}
 .exp-icon{width:40px;height:40px;background:var(--surface2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
@@ -73,12 +73,12 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .exp-date{font-size:11px;color:var(--text3);margin-top:2px;}
 .exp-del{color:var(--text3);background:none;border:none;cursor:pointer;font-size:15px;padding:4px;margin-left:6px;}
 .exp-del:hover{color:var(--danger);}
- 
+
 .filter-bar{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:14px;}
 .filter-bar::-webkit-scrollbar{display:none;}
 .filter-chip{padding:7px 13px;background:var(--surface2);border:1px solid var(--border);border-radius:99px;color:var(--text2);font-size:12px;white-space:nowrap;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s;}
 .filter-chip.active{background:rgba(124,106,247,.15);border-color:var(--accent);color:var(--accent);}
- 
+
 .form-group{margin-bottom:14px;}
 .form-label{display:block;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;}
 .req{color:var(--accent);}
@@ -86,49 +86,49 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .form-input:focus{border-color:var(--accent);}
 .form-input.money{font-family:'JetBrains Mono',monospace;font-size:18px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
- 
+
 .person-sel{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
 .person-btn{padding:13px;background:var(--surface2);border:2px solid var(--border);border-radius:var(--rs);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;font-weight:500;cursor:pointer;text-align:center;transition:all .2s;}
 .person-btn.active{border-color:var(--accent);background:rgba(124,106,247,.12);color:var(--accent);}
 .person-emoji{font-size:22px;display:block;margin-bottom:3px;}
- 
+
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
 .cat-btn{padding:12px 13px;background:var(--surface2);border:2px solid var(--border);border-radius:var(--rs);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:9px;transition:all .2s;}
 .cat-btn.active{border-color:var(--accent2);background:rgba(247,160,106,.12);color:var(--accent2);}
- 
+
 .subcat-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
 .subcat-tag{padding:7px 13px;background:var(--surface2);border:1px solid var(--border);border-radius:99px;color:var(--text2);font-size:12px;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s;}
 .subcat-tag.active{border-color:var(--accent3);color:var(--accent3);background:rgba(106,247,196,.1);}
 .subcat-tag.add{border-style:dashed;color:var(--text3);}
- 
+
 .btn-primary{width:100%;padding:16px;background:var(--accent);border:none;border-radius:var(--rs);color:#fff;font-family:'Sora',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;}
 .btn-primary:hover{background:#9580ff;}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
 .btn-secondary{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:11px 18px;border-radius:var(--rs);font-family:'Sora',sans-serif;font-size:13px;cursor:pointer;}
- 
+
 .bar-chart{display:flex;flex-direction:column;gap:9px;}
 .bar-row{display:flex;align-items:center;gap:8px;}
 .bar-lbl{font-size:12px;color:var(--text2);width:105px;flex-shrink:0;text-align:right;}
 .bar-track{flex:1;height:22px;background:var(--surface2);border-radius:6px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#fff;font-weight:600;}
- 
+
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:11px 18px;font-size:13px;font-weight:500;z-index:300;opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.success{border-color:var(--success);color:var(--success);}
 .toast.error{border-color:var(--danger);color:var(--danger);}
 .toast.warn{border-color:var(--warning);color:var(--warning);}
- 
+
 .empty{text-align:center;padding:36px 16px;color:var(--text3);}
 .empty-icon{font-size:36px;margin-bottom:10px;}
 .empty-text{font-size:13px;}
- 
+
 .fab{position:fixed;bottom:22px;right:22px;width:56px;height:56px;background:var(--accent);border:none;border-radius:50%;color:#fff;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(124,106,247,.4);z-index:90;display:flex;align-items:center;justify-content:center;}
- 
+
 .loading{position:fixed;inset:0;background:rgba(15,15,19,.95);z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
 .loading-spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-text{font-size:14px;color:var(--text2);}
- 
+
 .spacer{height:90px;}
 .green{color:var(--success)!important;}
 .red{color:var(--danger)!important;}
@@ -137,12 +137,12 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 </style>
 </head>
 <body>
- 
+
 <div class="loading" id="loading">
   <div class="loading-spinner"></div>
   <div class="loading-text" id="loadingText">Cargando datos...</div>
 </div>
- 
+
 <div class="header">
   <div class="header-top">
     <div class="logo">
@@ -162,9 +162,9 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
     <button class="nav-tab" onclick="showSection('config')">⚙️ Config</button>
   </div>
 </div>
- 
+
 <div class="main">
- 
+
 <div class="section active" id="sec-resumen">
   <div class="month-nav">
     <button class="month-btn" onclick="changeMonth(-1)">‹</button>
@@ -188,7 +188,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   <div class="card"><div class="card-title">🕐 Últimos gastos</div><div id="recentExpenses"></div></div>
   <div class="spacer"></div>
 </div>
- 
+
 <div class="section" id="sec-registrar">
   <div class="card">
     <div class="card-title">👤 ¿Quién gasta?</div>
@@ -223,7 +223,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   <button class="btn-primary" id="saveBtn" onclick="saveExpense()">✓ Registrar Gasto</button>
   <div class="spacer"></div>
 </div>
- 
+
 <div class="section" id="sec-gastos">
   <div class="month-nav">
     <button class="month-btn" onclick="changeMonth(-1)">‹</button>
@@ -234,7 +234,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   <div class="card"><div id="expenseList"></div></div>
   <div class="spacer"></div>
 </div>
- 
+
 <div class="section" id="sec-analitica">
   <div class="month-nav">
     <button class="month-btn" onclick="changeMonth(-1)">‹</button>
@@ -246,7 +246,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   <div class="card"><div class="card-title">📊 vs Presupuesto</div><div id="vsBudget"></div></div>
   <div class="spacer"></div>
 </div>
- 
+
 <div class="section" id="sec-config">
   <div class="card">
     <div class="card-title">👤 Personas</div>
@@ -266,26 +266,31 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   <button class="btn-primary" onclick="saveConfig()">💾 Guardar Configuración</button>
   <div class="spacer"></div>
 </div>
- 
+
 </div>
- 
+
 <button class="fab" onclick="showSection('registrar')">+</button>
 <div class="toast" id="toast"></div>
- 
+
 <script>
 // ══════════════════════════════════════════
 // CONFIGURACIÓN GITHUB
 // ══════════════════════════════════════════
-const GH_TOKEN = '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';
 const GH_REPO  = 'secastanomu/finanzas-hogar';
 const GH_FILE  = 'gastos.json';
 const GH_API   = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE;
-const GH_H     = {
-  'Authorization': 'token ' + GH_TOKEN,
-  'Content-Type':  'application/json',
-  'Accept':        'application/vnd.github.v3+json',
-};
- 
+
+function ghHeaders() {
+  var token = localStorage.getItem('fh_gh_token') || '';
+  return {
+    'Authorization': 'token ' + token,
+    'Content-Type':  'application/json',
+    'Accept':        'application/vnd.github.v3+json',
+  };
+}
+function getToken() { return localStorage.getItem('fh_gh_token') || ''; }
+function setToken(t) { localStorage.setItem('fh_gh_token', t.trim()); }
+
 // ══════════════════════════════════════════
 // CATEGORÍAS
 // ══════════════════════════════════════════
@@ -307,7 +312,7 @@ const CATS = [
   {id:'ropa',            name:'Ropa',             emoji:'👕', color:'#c46af7', subs:['Ropa adulto','Zapatos','Accesorios','Ropa deportiva']},
   {id:'otros',           name:'Otros',            emoji:'📦', color:'#9090a8', subs:['General','Imprevistos']},
 ];
- 
+
 // ══════════════════════════════════════════
 // ESTADO
 // ══════════════════════════════════════════
@@ -318,19 +323,19 @@ var ST = {
   cfg: { p1name:'Yo', p1emoji:'👨', p2name:'Esposa', p2emoji:'👩',
          totalBudget:0, catBudgets:{}, customSubs:{} },
 };
- 
+
 function loadCfg() {
   try { var s=localStorage.getItem('fh_cfg'); if(s) ST.cfg=Object.assign({},ST.cfg,JSON.parse(s)); } catch(e){}
 }
 function saveCfg() { localStorage.setItem('fh_cfg', JSON.stringify(ST.cfg)); }
- 
+
 // ══════════════════════════════════════════
 // GITHUB LECTURA / ESCRITURA
 // ══════════════════════════════════════════
 async function ghRead() {
-  var res = await fetch(GH_API, {headers: GH_H});
+  var res = await fetch(GH_API, {headers: ghHeaders()});
+  if (res.status === 401) throw new Error('TOKEN_INVALID');
   if (res.status === 404) {
-    // Primera vez — crear archivo vacío
     await ghWrite([], null);
     return {expenses:[], sha:null};
   }
@@ -339,17 +344,15 @@ async function ghRead() {
   var raw = JSON.parse(atob(data.content.replace(/\n/g,'')));
   return {expenses: raw.expenses || [], sha: data.sha};
 }
- 
+
 async function ghWrite(expenses, sha) {
   var content = btoa(unescape(encodeURIComponent(
     JSON.stringify({expenses: expenses}, null, 2)
   )));
-  var body = {
-    message: 'Gastos ' + new Date().toLocaleString('es-CO'),
-    content: content,
-  };
+  var body = { message: 'Gastos ' + new Date().toLocaleString('es-CO'), content: content };
   if (sha) body.sha = sha;
-  var res = await fetch(GH_API, {method:'PUT', headers:GH_H, body:JSON.stringify(body)});
+  var res = await fetch(GH_API, {method:'PUT', headers:ghHeaders(), body:JSON.stringify(body)});
+  if (res.status === 401) throw new Error('TOKEN_INVALID');
   if (!res.ok) {
     var e = await res.json().catch(function(){return {};});
     throw new Error(e.message || 'Error al guardar en GitHub');
@@ -357,7 +360,7 @@ async function ghWrite(expenses, sha) {
   var data = await res.json();
   return data.content.sha;
 }
- 
+
 // ══════════════════════════════════════════
 // SYNC
 // ══════════════════════════════════════════
@@ -369,18 +372,22 @@ async function syncNow() {
     renderAll(); setSync('ok');
     showToast('✅ ' + ST.expenses.length + ' gastos cargados', 'success');
   } catch(e) {
+    if (e.message === 'TOKEN_INVALID') {
+      localStorage.removeItem('fh_gh_token');
+      location.reload();
+    }
     setSync('error');
     showToast('❌ ' + e.message, 'error');
   }
 }
- 
+
 function setSync(s) {
   var dot=document.getElementById('syncDot'), txt=document.getElementById('syncText');
   if(s==='syncing'){dot.className='sync-dot syncing';txt.textContent='Guardando...';}
   else if(s==='ok'){dot.className='sync-dot ok';txt.textContent='Sincronizado ✓';}
   else if(s==='error'){dot.className='sync-dot error';txt.textContent='Error de sync';}
 }
- 
+
 // ══════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════
@@ -388,20 +395,67 @@ document.addEventListener('DOMContentLoaded', async function() {
   loadCfg();
   document.getElementById('expDate').value = new Date().toISOString().split('T')[0];
   buildCatGrid(); renderCfgPage(); applyNames();
-  document.getElementById('loadingText').textContent = 'Cargando tus gastos...';
+
+  // Si no hay token, mostrar pantalla de configuración
+  if (!getToken()) {
+    document.getElementById('loadingText').textContent = '';
+    document.getElementById('loading').innerHTML =
+      '<div style="background:#18181f;border:1px solid #2e2e3d;border-radius:16px;padding:28px;width:90%;max-width:400px;text-align:center">' +
+      '<div style="font-size:36px;margin-bottom:12px">🔑</div>' +
+      '<div style="font-size:18px;font-weight:700;margin-bottom:8px">Token de GitHub</div>' +
+      '<div style="font-size:13px;color:#9090a8;margin-bottom:20px;line-height:1.6">Para sincronizar tus gastos necesitas un<br>Personal Access Token de GitHub</div>' +
+      '<textarea id="tokenInput" rows="3" style="width:100%;background:#22222c;border:1px solid #2e2e3d;border-radius:10px;color:#e8e8f0;padding:12px;font-size:13px;font-family:JetBrains Mono,monospace;outline:none;resize:none;margin-bottom:12px" placeholder="ghp_..."></textarea>' +
+      '<div style="font-size:11px;color:#5a5a72;margin-bottom:16px">El token se guarda solo en este dispositivo.<br>' +
+      '<a href="https://github.com/settings/tokens" target="_blank" style="color:#7c6af7">Generar token en GitHub →</a></div>' +
+      '<button onclick="saveToken()" style="width:100%;padding:14px;background:#7c6af7;border:none;border-radius:10px;color:#fff;font-family:Sora,sans-serif;font-size:15px;font-weight:700;cursor:pointer">Conectar ✓</button>' +
+      '</div>';
+    return;
+  }
+  await doLoad();
+});
+
+async function saveToken() {
+  var t = (document.getElementById('tokenInput').value || '').trim();
+  if (!t || !t.startsWith('ghp_')) {
+    alert('Pega un token válido (empieza con ghp_)'); return;
+  }
+  setToken(t);
+  document.getElementById('loading').innerHTML =
+    '<div class="loading-spinner"></div><div class="loading-text">Conectando con GitHub...</div>';
+  await doLoad();
+}
+
+async function doLoad() {
+  document.getElementById('loading').style.display = 'flex';
+  document.getElementById('loading').innerHTML =
+    '<div class="loading-spinner"></div><div class="loading-text" id="loadingText">Cargando tus gastos...</div>';
   try {
     var r = await ghRead();
     ST.expenses = r.expenses; ST.sha = r.sha;
     setSync('ok');
     showToast('✅ ' + ST.expenses.length + ' gastos cargados', 'success');
   } catch(e) {
+    if (e.message === 'TOKEN_INVALID') {
+      localStorage.removeItem('fh_gh_token');
+      document.getElementById('loading').innerHTML =
+        '<div style="background:#18181f;border:1px solid #f76a6a;border-radius:16px;padding:28px;width:90%;max-width:400px;text-align:center">' +
+        '<div style="font-size:36px;margin-bottom:12px">❌</div>' +
+        '<div style="font-size:16px;font-weight:700;margin-bottom:8px;color:#f76a6a">Token inválido o expirado</div>' +
+        '<div style="font-size:13px;color:#9090a8;margin-bottom:20px">Genera un nuevo token en GitHub y pégalo aquí</div>' +
+        '<textarea id="tokenInput" rows="3" style="width:100%;background:#22222c;border:1px solid #2e2e3d;border-radius:10px;color:#e8e8f0;padding:12px;font-size:13px;font-family:JetBrains Mono,monospace;outline:none;resize:none;margin-bottom:12px" placeholder="ghp_..."></textarea>' +
+        '<div style="font-size:11px;color:#5a5a72;margin-bottom:16px">' +
+        '<a href="https://github.com/settings/tokens" target="_blank" style="color:#7c6af7">Generar nuevo token →</a></div>' +
+        '<button onclick="saveToken()" style="width:100%;padding:14px;background:#7c6af7;border:none;border-radius:10px;color:#fff;font-family:Sora,sans-serif;font-size:15px;font-weight:700;cursor:pointer">Reconectar ✓</button>' +
+        '</div>';
+      return;
+    }
     setSync('error');
     showToast('❌ ' + e.message, 'error');
   }
   document.getElementById('loading').style.display = 'none';
   renderAll();
-});
- 
+}
+
 // ══════════════════════════════════════════
 // NAVEGACIÓN
 // ══════════════════════════════════════════
@@ -426,7 +480,7 @@ function renderAll() {
   ['monthLabel','monthLabel2','monthLabel3'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=lbl;});
   renderResumen(); renderGastos(); renderAnalitica();
 }
- 
+
 // ══════════════════════════════════════════
 // UTILIDADES
 // ══════════════════════════════════════════
@@ -443,7 +497,7 @@ function monthExps(){
     return d.getMonth()===ST.month&&d.getFullYear()===ST.year;
   });
 }
- 
+
 // ══════════════════════════════════════════
 // RESUMEN
 // ══════════════════════════════════════════
@@ -464,7 +518,7 @@ function renderResumen() {
   var fill=document.getElementById('progressFill');
   fill.style.width=pct+'%';
   fill.style.background=pct>90?'var(--danger)':pct>70?'var(--warning)':'var(--accent)';
- 
+
   var ct={};
   exps.forEach(function(e){ct[e.category]=(ct[e.category]||0)+e.amount;});
   var sorted=CATS.filter(function(c){return ct[c.id]>0;}).sort(function(a,b){return ct[b.id]-ct[a.id];});
@@ -479,13 +533,13 @@ function renderResumen() {
         (cb>0?'<div class="cat-bar"><div class="cat-bar-fill" style="width:'+p+'%;background:'+bc+'"></div></div>'+
         '<div style="font-size:11px;color:var(--text2);margin-top:4px">'+fmtFull(amt)+' de '+fmtFull(cb)+' · '+p.toFixed(0)+'%</div>':'')+'</div>';
     }).join('');
- 
+
   var recent=exps.slice().sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,5);
   var re2=document.getElementById('recentExpenses');
   re2.innerHTML=recent.length?recent.map(function(e){return expHTML(e,false);}).join(''):
     '<div class="empty"><div class="empty-icon">🌱</div><div class="empty-text">Sin gastos este mes</div></div>';
 }
- 
+
 // ══════════════════════════════════════════
 // GASTOS
 // ══════════════════════════════════════════
@@ -502,7 +556,7 @@ function renderGastos(fc) {
   document.getElementById('expenseList').innerHTML=sorted.length?sorted.map(function(e){return expHTML(e,true);}).join(''):
     '<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">Sin gastos este mes</div></div>';
 }
- 
+
 function expHTML(e,del){
   var cat=CATS.find(function(c){return c.id===e.category;});
   var pn=e.person==='p1'?ST.cfg.p1name:ST.cfg.p2name;
@@ -513,7 +567,7 @@ function expHTML(e,del){
     '<div class="exp-right"><div class="exp-amount">'+fmtFull(e.amount)+'</div><div class="exp-date">'+fmtDate(e.date)+'</div></div>'+
     (del?'<button class="exp-del" onclick="delExpense(\''+e.id+'\')">🗑</button>':'')+'</div>';
 }
- 
+
 async function delExpense(id) {
   if(!confirm('¿Eliminar este gasto?')) return;
   ST.expenses=ST.expenses.filter(function(e){return e.id!==id;});
@@ -521,7 +575,7 @@ async function delExpense(id) {
   try { ST.sha=await ghWrite(ST.expenses,ST.sha); setSync('ok'); showToast('Eliminado ✓','success'); }
   catch(e){ setSync('error'); showToast('❌ '+e.message,'error'); await syncNow(); }
 }
- 
+
 // ══════════════════════════════════════════
 // ANALITICA
 // ══════════════════════════════════════════
@@ -555,7 +609,7 @@ function renderAnalitica() {
     '<div class="bstat"><div class="bstat-val '+(budget-total>=0?'green':'red')+'">'+fmtFull(Math.abs(budget-total))+'</div><div class="bstat-lbl">'+(budget-total>=0?'Disponible':'Excedido')+'</div></div>'+
     '<div class="bstat"><div class="bstat-val">'+((total/budget)*100).toFixed(1)+'%</div><div class="bstat-lbl">Ejecutado</div></div></div>';
 }
- 
+
 // ══════════════════════════════════════════
 // REGISTRAR
 // ══════════════════════════════════════════
@@ -596,7 +650,7 @@ function addSub(catId){
   saveCfg(); selectCat(catId);
   showToast('Subcategoría agregada ✓','success');
 }
- 
+
 async function saveExpense(){
   var date=document.getElementById('expDate').value;
   var amount=parseFloat(document.getElementById('expAmount').value);
@@ -606,16 +660,16 @@ async function saveExpense(){
   if(!comment){showToast('El comentario es obligatorio ⚠️','error');return;}
   if(!ST.cat){showToast('Selecciona una categoría ⚠️','error');return;}
   if(ST.saving){showToast('Espera, guardando...','warn');return;}
- 
+
   var expense={id:Date.now().toString(),date,amount,category:ST.cat,
     subcategory:ST.sub||'',description:comment,person:ST.person,
     createdAt:new Date().toISOString()};
- 
+
   ST.saving=true;
   var btn=document.getElementById('saveBtn');
   btn.disabled=true; btn.textContent='Guardando...';
   ST.expenses.push(expense); renderAll(); setSync('syncing');
- 
+
   try {
     ST.sha=await ghWrite(ST.expenses,ST.sha);
     setSync('ok'); showToast('✅ Gasto guardado en GitHub','success');
@@ -632,7 +686,7 @@ async function saveExpense(){
   }
   ST.saving=false; btn.disabled=false; btn.textContent='✓ Registrar Gasto';
 }
- 
+
 // ══════════════════════════════════════════
 // CONFIG
 // ══════════════════════════════════════════
@@ -678,7 +732,7 @@ function saveConfig(){
   saveCfg(); applyNames(); renderAll();
   showToast('✅ Configuración guardada','success');
 }
- 
+
 // ══════════════════════════════════════════
 // TOAST
 // ══════════════════════════════════════════

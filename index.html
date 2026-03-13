@@ -334,25 +334,15 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
       <div class="modal-title">🔗 Conectar Google Sheets</div>
       <button onclick="closeSheetModal()" style="background:var(--surface2);border:1px solid var(--border);color:var(--text2);width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:16px">×</button>
     </div>
-    <div class="modal-sub">Pega la URL del Web App de Apps Script. Debe terminar en <b style="color:var(--accent)">/exec</b></div>
+    <div class="modal-sub">La URL de tu Apps Script está configurada. Si cambia en el futuro, pégala aquí.</div>
     <div class="form-group">
-      <label class="form-label">URL del Web App</label>
-      <textarea id="webAppUrl" class="url-textarea" rows="3" placeholder="https://script.google.com/macros/s/.../exec"></textarea>
+      <label class="form-label">URL del Web App (googleusercontent)</label>
+      <textarea id="webAppUrl" class="url-textarea" rows="4" placeholder="https://script.googleusercontent.com/..."></textarea>
     </div>
     <div class="error-box" id="sheetErrorBox"></div>
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px">
       <button class="btn-secondary" onclick="closeSheetModal()">Cancelar</button>
       <button class="btn-primary" onclick="connectSheet()">Conectar ✓</button>
-    </div>
-    <div class="steps-box">
-      <b style="color:var(--text)">📋 Pasos en Apps Script:</b><br>
-      1. Sheet → Extensiones → Apps Script<br>
-      2. Pegar código → Guardar (💾)<br>
-      3. Implementar → Nueva implementación<br>
-      4. Tipo: Aplicación web<br>
-      5. Ejecutar como: <b style="color:var(--accent)">Yo</b><br>
-      6. Acceso: <b style="color:var(--accent)">Cualquier usuario, incluso anónimo</b><br>
-      7. Implementar → Autorizar → copiar URL <b style="color:var(--accent)">/exec</b>
     </div>
   </div>
 </div>
@@ -420,6 +410,12 @@ function saveData() {
 // ════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
   loadData();
+  // Si no hay URL guardada, usar la URL hardcodeada
+  if (!ST.config.webAppUrl) {
+    ST.config.webAppUrl = GS_BASE;
+    ST.sheetOk = true;
+    saveData();
+  }
   document.getElementById('expDate').value = new Date().toISOString().split('T')[0];
   buildCatGrid();
   renderConfigPage();
@@ -712,28 +708,34 @@ async function saveExpense() {
 }
  
 // ════════════════════════════════════════════
-// GOOGLE SHEETS — via allorigins proxy (evita CORS + sigue redirecciones)
+// GOOGLE SHEETS — fetch directo a googleusercontent
 // ════════════════════════════════════════════
+ 
+// URL base que responde sin redirección ni CORS
+const GS_BASE = 'https://script.googleusercontent.com/macros/echo?user_content_key=AY5xjrRzSqBN8i4zLDJx0Wa0KLqdCqzWumXW5rEJoHRFbV8kUtmSzqCn7_8wefWjhIfBjE9GQek5edtZd92XNSTD93wTM-G7yymNgbdircJCmOd94gMZjCXM_DSUKP_6lx3j1KCI7GKzI3SHyKAeuDCppBwK40RR9e-uUxI6Mwg30FznCPLr_fkAxjAjYoNzvFXSNF0BRkqcDc-ApD9YzDifVzef2rhGVq6B9GV9_VWqpp0a9OgxciCicAvyoFcWUDADBt7hrGoSeXInKlZv7TaOiaBiYnOD-7v0eIJyNOf2&lib=MzoH04kIYXRBgrIESpos6EQlqdWci1cVJ';
+ 
+function gsUrl(action) {
+  return GS_BASE + '&action=' + action;
+}
+ 
 function openSheetModal() {
+  // Pre-llenar con la URL googleusercontent si no hay una guardada
   var el = document.getElementById('webAppUrl');
-  el.value = ST.config.webAppUrl || '';
-  document.getElementById('sheetErrorBox').style.display='none';
-  document.getElementById('sheetModal').style.display='flex';
+  el.value = ST.config.webAppUrl || GS_BASE;
+  document.getElementById('sheetErrorBox').style.display = 'none';
+  document.getElementById('sheetModal').style.display = 'flex';
 }
 function closeSheetModal() {
-  document.getElementById('sheetModal').style.display='none';
+  document.getElementById('sheetModal').style.display = 'none';
 }
  
 async function connectSheet() {
   var raw = document.getElementById('webAppUrl').value || '';
-  var url = raw.trim().replace(/[\r\n\s]+/g,'').replace('/dev','/exec');
+  var url = raw.trim().replace(/[\r\n\s]+/g, '');
   document.getElementById('webAppUrl').value = url;
-  document.getElementById('sheetErrorBox').style.display='none';
+  document.getElementById('sheetErrorBox').style.display = 'none';
  
   if (!url) { showErr('Pega la URL antes de conectar'); return; }
-  if (!url.includes('script.google.com') && !url.includes('googleusercontent.com')) {
-    showErr('La URL debe ser de Google Apps Script'); return;
-  }
  
   ST.config.webAppUrl = url;
   ST.sheetOk = true;
@@ -741,7 +743,7 @@ async function connectSheet() {
   setSyncStatus('syncing');
  
   try {
-    var data = await proxyGet(url + '?action=test');
+    var data = await gsGet(url + '&action=test');
     if (data && (data.status === 'ok' || data.rows !== undefined || data.total !== undefined)) {
       setSyncStatus('ok');
       document.getElementById('cfgSheetStatus').textContent = '✅ Conectado';
@@ -750,12 +752,12 @@ async function connectSheet() {
       closeSheetModal();
       await loadFromSheet();
     } else {
-      throw new Error('Respuesta inesperada del servidor');
+      throw new Error('Respuesta inesperada');
     }
   } catch(e) {
     ST.sheetOk = false;
     setSyncStatus('error');
-    showErr('Error al conectar: ' + e.message);
+    showErr('Error: ' + e.message);
   }
 }
  
@@ -765,32 +767,11 @@ function showErr(msg) {
   el.style.display = 'block';
 }
  
-// Proxy que sigue redirecciones y resuelve CORS
-// Usa allorigins.win — servicio público gratuito
-async function proxyGet(targetUrl) {
-  var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
-  var res = await fetch(proxyUrl);
-  if (!res.ok) throw new Error('Proxy no disponible (HTTP ' + res.status + ')');
-  var wrapper = await res.json();
-  if (!wrapper.contents) throw new Error('Respuesta vacía del proxy');
-  try {
-    return JSON.parse(wrapper.contents);
-  } catch(e) {
-    throw new Error('Respuesta no es JSON válido');
-  }
-}
- 
-// Para POST usamos no-cors (Apps Script recibe aunque no podamos leer respuesta)
-async function proxyPost(targetUrl, payload) {
-  try {
-    await fetch(targetUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'text/plain'},
-      body: JSON.stringify(payload),
-    });
-    return true;
-  } catch(e) { return false; }
+// Fetch directo — funciona porque googleusercontent ya tiene CORS correcto
+async function gsGet(url) {
+  var res = await fetch(url, { method: 'GET' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return await res.json();
 }
  
 function parseTS(ts) {
@@ -800,30 +781,54 @@ function parseTS(ts) {
     if (!isNaN(d.getTime())) return d.toISOString().split('T')[0];
     var m = ts.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
     if (m) return m[3]+'-'+m[2].padStart(2,'0')+'-'+m[1].padStart(2,'0');
-  } catch(e){}
+  } catch(e) {}
   return ts.split(' ')[0];
 }
 function toTS(dateStr) {
-  var d = new Date(dateStr+'T12:00:00');
+  var d = new Date(dateStr + 'T12:00:00');
   return (d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear()+' 12:00:00';
 }
  
 async function appendToSheet(expense) {
   if (!ST.config.webAppUrl) return false;
-  var cat   = CATEGORIES.find(function(c){return c.id===expense.category;});
-  var pname = expense.person==='p1' ? ST.config.p1name : ST.config.p2name;
-  return await proxyPost(ST.config.webAppUrl, {
-    action: 'append',
-    row: [toTS(expense.date), expense.description, expense.amount,
-          cat ? cat.name : expense.category, expense.subcategory||'', pname]
-  });
+  try {
+    var cat   = CATEGORIES.find(function(c){ return c.id === expense.category; });
+    var pname = expense.person === 'p1' ? ST.config.p1name : ST.config.p2name;
+    // Para escritura usamos la URL /exec original con POST no-cors
+    // (el Apps Script recibe aunque no podamos leer la respuesta)
+    var execUrl = 'https://script.google.com/macros/s/' + extractScriptId() + '/exec';
+    await fetch(execUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        action: 'append',
+        row: [toTS(expense.date), expense.description, expense.amount,
+              cat ? cat.name : expense.category, expense.subcategory||'', pname]
+      }),
+    });
+    return true;
+  } catch(e) { return false; }
+}
+ 
+// Extrae el script ID de la URL googleusercontent guardada
+function extractScriptId() {
+  var url = ST.config.webAppUrl || GS_BASE;
+  // El lib= param contiene el deployment ID
+  var m = url.match(/lib=([^&]+)/);
+  return m ? m[1] : '';
 }
  
 async function loadFromSheet() {
   if (!ST.sheetOk || !ST.config.webAppUrl) return;
   setSyncStatus('syncing');
   try {
-    var data = await proxyGet(ST.config.webAppUrl + '?action=read');
+    var readUrl = (ST.config.webAppUrl || GS_BASE);
+    // Asegurar que tiene &action=read
+    if (!readUrl.includes('action=')) readUrl += '&action=read';
+    else readUrl = readUrl.replace(/action=[^&]+/, 'action=read');
+ 
+    var data = await gsGet(readUrl);
     var rows = data.rows || [];
     var remote = [];
     rows.forEach(function(row, idx) {
@@ -837,17 +842,17 @@ async function loadFromSheet() {
         id: 'sh_'+(idx+2), date: parseTS(row[0]),
         description: row[1]||'', amount: val,
         category: cat ? cat.id : 'otros', subcategory: row[4]||'',
-        person: row[5]===ST.config.p2name ? 'p2' : 'p1',
+        person: row[5] === ST.config.p2name ? 'p2' : 'p1',
         fromSheet: true, createdAt: new Date().toISOString(),
       });
     });
-    var local = ST.expenses.filter(function(e){return !e.fromSheet;});
+    var local = ST.expenses.filter(function(e){ return !e.fromSheet; });
     ST.expenses = remote.concat(local);
     saveData(); renderAll(); setSyncStatus('ok');
-    showToast('✅ '+remote.length+' registros cargados', 'success');
+    showToast('✅ ' + remote.length + ' registros cargados', 'success');
   } catch(e) {
     setSyncStatus('error');
-    showToast('❌ '+e.message, 'error');
+    showToast('❌ ' + e.message, 'error');
   }
 }
  

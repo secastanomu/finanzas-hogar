@@ -8684,6 +8684,16 @@
       "description": "Cena arepas",
       "person": "p1",
       "createdAt": "2026-03-14T19:56:13.193Z"
+    },
+    {
+      "id": "1773518204033",
+      "date": "2026-03-14",
+      "amount": 30500,
+      "category": "mercado",
+      "subcategory": "Panaderia",
+      "description": "Compras en el molino",
+      "person": "p1",
+      "createdAt": "2026-03-14T19:56:44.033Z"
     }
   ]
 }

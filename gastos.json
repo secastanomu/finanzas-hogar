@@ -8714,6 +8714,16 @@
       "description": "Mercado la montaña",
       "person": "p1",
       "createdAt": "2026-03-14T19:59:18.452Z"
+    },
+    {
+      "id": "1773518419178",
+      "date": "2026-03-14",
+      "amount": 139352,
+      "category": "mercado",
+      "subcategory": "Mercado en general",
+      "description": "Mercado la montaña",
+      "person": "p1",
+      "createdAt": "2026-03-14T20:00:19.178Z"
     }
   ]
 }

@@ -8664,6 +8664,16 @@
       "description": "Mercado La montaña",
       "person": "p2",
       "createdAt": "2026-03-14T01:52:55.452Z"
+    },
+    {
+      "id": "1773453197669",
+      "date": "2026-03-14",
+      "amount": 10200,
+      "category": "educacion",
+      "subcategory": "",
+      "description": "Aporte clase Cocina",
+      "person": "p2",
+      "createdAt": "2026-03-14T01:53:17.669Z"
     }
   ]
 }

@@ -8694,6 +8694,16 @@
       "description": "Compras en el molino",
       "person": "p1",
       "createdAt": "2026-03-14T19:56:44.033Z"
+    },
+    {
+      "id": "1773518274728",
+      "date": "2026-03-14",
+      "amount": 49492,
+      "category": "mercado",
+      "subcategory": "Frutas y Verduras",
+      "description": "Mercado la Montaña",
+      "person": "p1",
+      "createdAt": "2026-03-14T19:57:54.728Z"
     }
   ]
 }

@@ -8704,6 +8704,16 @@
       "description": "Mercado la Montaña",
       "person": "p1",
       "createdAt": "2026-03-14T19:57:54.728Z"
+    },
+    {
+      "id": "1773518358452",
+      "date": "2026-03-14",
+      "amount": 68345,
+      "category": "mercado",
+      "subcategory": "Aseo",
+      "description": "Mercado la montaña",
+      "person": "p1",
+      "createdAt": "2026-03-14T19:59:18.452Z"
     }
   ]
 }

@@ -8644,6 +8644,16 @@
       "description": "Cervezas Tada",
       "person": "p1",
       "createdAt": "2026-03-14T01:46:17.771Z"
+    },
+    {
+      "id": "1773453152107",
+      "date": "2026-03-12",
+      "amount": 12000,
+      "category": "comida_fuera",
+      "subcategory": "",
+      "description": "Desayuno Zully Arepas",
+      "person": "p1",
+      "createdAt": "2026-03-14T01:52:32.107Z"
     }
   ]
 }

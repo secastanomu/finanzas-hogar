@@ -8734,6 +8734,16 @@
       "description": "Abono Sebas Tc Nu Marce",
       "person": "p2",
       "createdAt": "2026-03-15T20:52:17.033Z"
+    },
+    {
+      "id": "1773607992839",
+      "date": "2026-03-15",
+      "amount": 223000,
+      "category": "creditos",
+      "subcategory": "Tarjeta crédito",
+      "description": "Abono Marce Tc Nu Marce",
+      "person": "p2",
+      "createdAt": "2026-03-15T20:53:12.839Z"
     }
   ]
 }

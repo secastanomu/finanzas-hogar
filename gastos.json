@@ -8804,6 +8804,16 @@
       "description": "Ginger beer",
       "person": "p1",
       "createdAt": "2026-03-15T21:00:28.563Z"
+    },
+    {
+      "id": "1773608575690",
+      "date": "2026-03-15",
+      "amount": 280000,
+      "category": "creditos",
+      "subcategory": "Tarjeta crédito",
+      "description": "Cuota tarjeta",
+      "person": "p1",
+      "createdAt": "2026-03-15T21:02:55.690Z"
     }
   ]
 }

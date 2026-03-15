@@ -8774,6 +8774,16 @@
       "description": "Cafe para regalar",
       "person": "p1",
       "createdAt": "2026-03-15T20:56:56.709Z"
+    },
+    {
+      "id": "1773608248915",
+      "date": "2026-03-14",
+      "amount": 115000,
+      "category": "mercado",
+      "subcategory": "café",
+      "description": "Cafe evocare",
+      "person": "p1",
+      "createdAt": "2026-03-15T20:57:28.916Z"
     }
   ]
 }

@@ -8814,6 +8814,16 @@
       "description": "Cuota tarjeta",
       "person": "p1",
       "createdAt": "2026-03-15T21:02:55.690Z"
+    },
+    {
+      "id": "1773608662700",
+      "date": "2026-03-15",
+      "amount": 200000,
+      "category": "creditos",
+      "subcategory": "Tarjeta crédito",
+      "description": "Segundo cuota fito",
+      "person": "p1",
+      "createdAt": "2026-03-15T21:04:22.700Z"
     }
   ]
 }

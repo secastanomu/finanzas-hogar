@@ -8764,6 +8764,16 @@
       "description": "Cafe evocare",
       "person": "p1",
       "createdAt": "2026-03-15T20:56:34.394Z"
+    },
+    {
+      "id": "1773608216709",
+      "date": "2026-03-14",
+      "amount": 40000,
+      "category": "regalos",
+      "subcategory": "Detalles",
+      "description": "Cafe para regalar",
+      "person": "p1",
+      "createdAt": "2026-03-15T20:56:56.709Z"
     }
   ]
 }

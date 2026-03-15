@@ -8794,6 +8794,16 @@
       "description": "Compras de ikea",
       "person": "p1",
       "createdAt": "2026-03-15T20:59:19.149Z"
+    },
+    {
+      "id": "1773608428563",
+      "date": "2026-03-14",
+      "amount": 34000,
+      "category": "entretenimiento",
+      "subcategory": "",
+      "description": "Ginger beer",
+      "person": "p1",
+      "createdAt": "2026-03-15T21:00:28.563Z"
     }
   ]
 }

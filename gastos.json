@@ -8754,6 +8754,16 @@
       "description": "Huevos",
       "person": "p1",
       "createdAt": "2026-03-15T20:56:13.969Z"
+    },
+    {
+      "id": "1773608194394",
+      "date": "2026-03-14",
+      "amount": 29000,
+      "category": "comida_fuera",
+      "subcategory": "Café",
+      "description": "Cafe evocare",
+      "person": "p1",
+      "createdAt": "2026-03-15T20:56:34.394Z"
     }
   ]
 }

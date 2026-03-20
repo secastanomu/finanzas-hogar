@@ -8786,16 +8786,6 @@
       "createdAt": "2026-03-15T20:57:28.916Z"
     },
     {
-      "id": "1773608359149",
-      "date": "2026-03-14",
-      "amount": 46000,
-      "category": "hogar",
-      "subcategory": "cocina",
-      "description": "Compras de ikea",
-      "person": "p1",
-      "createdAt": "2026-03-15T20:59:19.149Z"
-    },
-    {
       "id": "1773608428563",
       "date": "2026-03-14",
       "amount": 34000,

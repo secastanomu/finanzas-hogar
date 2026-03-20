@@ -8864,6 +8864,16 @@
       "description": "Aporte clase I Panaderia",
       "person": "p1",
       "createdAt": "2026-03-20T21:38:51.417Z"
+    },
+    {
+      "id": "1774042799410",
+      "date": "2026-03-19",
+      "amount": 15000,
+      "category": "regalos",
+      "subcategory": "",
+      "description": "Regalo Sebas",
+      "person": "p1",
+      "createdAt": "2026-03-20T21:39:59.412Z"
     }
   ]
 }

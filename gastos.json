@@ -8854,6 +8854,16 @@
       "description": "Pilas",
       "person": "p1",
       "createdAt": "2026-03-20T21:36:44.490Z"
+    },
+    {
+      "id": "1774042731417",
+      "date": "2026-03-20",
+      "amount": 12700,
+      "category": "educacion",
+      "subcategory": "",
+      "description": "Aporte clase I Panaderia",
+      "person": "p1",
+      "createdAt": "2026-03-20T21:38:51.417Z"
     }
   ]
 }

@@ -8854,6 +8854,16 @@
       "description": "Revisión moto Marce",
       "person": "p1",
       "createdAt": "2026-03-20T21:36:15.745Z"
+    },
+    {
+      "id": "1774042604490",
+      "date": "2026-03-19",
+      "amount": 5000,
+      "category": "mercado",
+      "subcategory": "Aseo",
+      "description": "Pilas",
+      "person": "p1",
+      "createdAt": "2026-03-20T21:36:44.490Z"
     }
   ]
 }

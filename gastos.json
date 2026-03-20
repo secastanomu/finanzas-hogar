@@ -8844,6 +8844,16 @@
       "description": "Ikea compras cocina",
       "person": "p1",
       "createdAt": "2026-03-20T21:35:33.869Z"
+    },
+    {
+      "id": "1774042575745",
+      "date": "2026-03-19",
+      "amount": 50000,
+      "category": "moto",
+      "subcategory": "Mantenimiento",
+      "description": "Revisión moto Marce",
+      "person": "p1",
+      "createdAt": "2026-03-20T21:36:15.745Z"
     }
   ]
 }

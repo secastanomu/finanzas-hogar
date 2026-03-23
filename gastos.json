@@ -8934,6 +8934,16 @@
       "description": "Oxxo perritos",
       "person": "p1",
       "createdAt": "2026-03-23T16:48:42.485Z"
+    },
+    {
+      "id": "1774284543049",
+      "date": "2026-03-21",
+      "amount": 20000,
+      "category": "transporte",
+      "subcategory": "Uber",
+      "description": "Uber concierto",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:49:03.049Z"
     }
   ]
 }

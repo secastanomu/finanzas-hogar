@@ -8894,6 +8894,16 @@
       "description": "Tanqueo",
       "person": "p1",
       "createdAt": "2026-03-23T16:46:20.477Z"
+    },
+    {
+      "id": "1774284405815",
+      "date": "2026-03-21",
+      "amount": 48000,
+      "category": "mercado",
+      "subcategory": "Carne",
+      "description": "Mercado la montaña",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:46:45.816Z"
     }
   ]
 }

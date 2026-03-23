@@ -8954,6 +8954,16 @@
       "description": "Ventolini",
       "person": "p1",
       "createdAt": "2026-03-23T16:49:49.615Z"
+    },
+    {
+      "id": "1774284620677",
+      "date": "2026-03-22",
+      "amount": 72000,
+      "category": "comida_fuera",
+      "subcategory": "Cena",
+      "description": "Spizzica",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:50:20.677Z"
     }
   ]
 }

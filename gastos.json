@@ -8924,6 +8924,16 @@
       "description": "Papitas concierto",
       "person": "p1",
       "createdAt": "2026-03-23T16:48:19.205Z"
+    },
+    {
+      "id": "1774284522485",
+      "date": "2026-03-21",
+      "amount": 51000,
+      "category": "comida_fuera",
+      "subcategory": "",
+      "description": "Oxxo perritos",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:48:42.485Z"
     }
   ]
 }

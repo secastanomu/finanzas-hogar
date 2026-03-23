@@ -8884,6 +8884,16 @@
       "description": "Bourbon Meli y Lau",
       "person": "p1",
       "createdAt": "2026-03-23T16:45:41.891Z"
+    },
+    {
+      "id": "1774284380477",
+      "date": "2026-03-21",
+      "amount": 38000,
+      "category": "moto",
+      "subcategory": "Gasolina",
+      "description": "Tanqueo",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:46:20.477Z"
     }
   ]
 }

@@ -8964,6 +8964,16 @@
       "description": "Spizzica",
       "person": "p1",
       "createdAt": "2026-03-23T16:50:20.677Z"
+    },
+    {
+      "id": "1774284636334",
+      "date": "2026-03-22",
+      "amount": 14000,
+      "category": "entretenimiento",
+      "subcategory": "",
+      "description": "Cerveza",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:50:36.334Z"
     }
   ]
 }

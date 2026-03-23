@@ -8974,6 +8974,16 @@
       "description": "Cerveza",
       "person": "p1",
       "createdAt": "2026-03-23T16:50:36.334Z"
+    },
+    {
+      "id": "1774284676173",
+      "date": "2026-03-21",
+      "amount": 8700,
+      "category": "mercado",
+      "subcategory": "",
+      "description": "El molino",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:51:16.173Z"
     }
   ]
 }

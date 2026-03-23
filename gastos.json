@@ -8914,6 +8914,16 @@
       "description": "Factura Claro Marce",
       "person": "p1",
       "createdAt": "2026-03-23T16:47:19.516Z"
+    },
+    {
+      "id": "1774284499205",
+      "date": "2026-03-21",
+      "amount": 25000,
+      "category": "entretenimiento",
+      "subcategory": "Conciertos",
+      "description": "Papitas concierto",
+      "person": "p1",
+      "createdAt": "2026-03-23T16:48:19.205Z"
     }
   ]
 }

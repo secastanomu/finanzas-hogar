@@ -9034,6 +9034,16 @@
       "description": "Regalito Roja Laika",
       "person": "p1",
       "createdAt": "2026-03-26T18:01:52.994Z"
+    },
+    {
+      "id": "1774548141408",
+      "date": "2026-03-26",
+      "amount": 13800,
+      "category": "educacion",
+      "subcategory": "Materiales",
+      "description": "Aporte clase Panaderia",
+      "person": "p1",
+      "createdAt": "2026-03-26T18:02:21.408Z"
     }
   ]
 }

@@ -9024,6 +9024,16 @@
       "description": "Comida y arena",
       "person": "p1",
       "createdAt": "2026-03-26T18:01:31.058Z"
+    },
+    {
+      "id": "1774548112994",
+      "date": "2026-03-24",
+      "amount": 10000,
+      "category": "regalos",
+      "subcategory": "Detalles",
+      "description": "Regalito Roja Laika",
+      "person": "p1",
+      "createdAt": "2026-03-26T18:01:52.994Z"
     }
   ]
 }

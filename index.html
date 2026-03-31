@@ -498,29 +498,25 @@ function dayOfQ(q, month, year){
 // GITHUB READ/WRITE
 // ══════════════════════════════════════════
 async function ghRead(){
-  var res = await fetch(GH_API,{headers:ghH()});
+  // Paso 1: obtener sha del archivo via Contents API
+  var res = await fetch(GH_API, {headers:ghH()});
   if(res.status===401) throw new Error('TOKEN_INVALID');
   if(res.status===404){ await ghWrite([],null); return {expenses:[],sha:null}; }
   if(!res.ok) throw new Error('GitHub '+res.status);
   var meta = await res.json();
 
-  // Archivo grande: content viene vacío, usar raw URL sin Authorization (repo público)
   var raw;
+  // Paso 2: si content viene vacío (archivo >1MB), usar Git Blobs API
   if(!meta.content || meta.content.trim()==='' || meta.encoding==='none'){
-    var rawUrl = 'https://raw.githubusercontent.com/'+GH_REPO+'/main/'+GH_FILE+'?t='+Date.now();
-    var dlRes = await fetch(rawUrl); // sin token — funciona porque el repo es público
-    if(!dlRes.ok) throw new Error('Error descargando archivo: '+dlRes.status);
-    raw = await dlRes.json();
+    var blobUrl = 'https://api.github.com/repos/'+GH_REPO+'/git/blobs/'+meta.sha;
+    var blobRes = await fetch(blobUrl, {headers:ghH()});
+    if(!blobRes.ok) throw new Error('Error blob: '+blobRes.status);
+    var blob = await blobRes.json();
+    // Git Blobs devuelve base64 pero en chunks — limpiar y decodificar
+    var b64 = blob.content.replace(/\n/g,'').replace(/\r/g,'');
+    raw = JSON.parse(atob(b64));
   } else {
-    try {
-      raw = JSON.parse(atob(meta.content.replace(/\n/g,'')));
-    } catch(e) {
-      // Fallback a raw URL
-      var rawUrl2 = 'https://raw.githubusercontent.com/'+GH_REPO+'/main/'+GH_FILE+'?t='+Date.now();
-      var dlRes2 = await fetch(rawUrl2);
-      if(!dlRes2.ok) throw new Error('Error leyendo archivo');
-      raw = await dlRes2.json();
-    }
+    raw = JSON.parse(atob(meta.content.replace(/\n/g,'')));
   }
   return {expenses: raw.expenses||[], sha: meta.sha};
 }

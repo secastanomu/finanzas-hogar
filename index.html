@@ -498,39 +498,36 @@ function dayOfQ(q, month, year){
 // GITHUB READ/WRITE
 // ══════════════════════════════════════════
 async function ghRead(){
-  // Primer paso: obtener el sha y verificar existencia
   var res = await fetch(GH_API,{headers:ghH()});
   if(res.status===401) throw new Error('TOKEN_INVALID');
   if(res.status===404){ await ghWrite([],null); return {expenses:[],sha:null}; }
   if(!res.ok) throw new Error('GitHub '+res.status);
   var meta = await res.json();
 
-  // Si el contenido está truncado (archivo grande), descargar por URL directa
+  // Archivo grande: content viene vacío, usar raw URL sin Authorization (repo público)
   var raw;
-  if(meta.truncated || !meta.content || meta.content.trim()===''){
-    // Usar download_url que no tiene límite de tamaño
-    var dlRes = await fetch(meta.download_url, {headers:{'Authorization':'token '+getToken()}});
+  if(!meta.content || meta.content.trim()==='' || meta.encoding==='none'){
+    var rawUrl = 'https://raw.githubusercontent.com/'+GH_REPO+'/main/'+GH_FILE+'?t='+Date.now();
+    var dlRes = await fetch(rawUrl); // sin token — funciona porque el repo es público
     if(!dlRes.ok) throw new Error('Error descargando archivo: '+dlRes.status);
     raw = await dlRes.json();
   } else {
     try {
       raw = JSON.parse(atob(meta.content.replace(/\n/g,'')));
     } catch(e) {
-      // Falló el parseo del base64 — intentar con download_url como fallback
-      if(meta.download_url){
-        var dlRes2 = await fetch(meta.download_url, {headers:{'Authorization':'token '+getToken()}});
-        if(!dlRes2.ok) throw new Error('Error descargando archivo');
-        raw = await dlRes2.json();
-      } else {
-        throw new Error('Unexpected end of JSON input — archivo corrupto');
-      }
+      // Fallback a raw URL
+      var rawUrl2 = 'https://raw.githubusercontent.com/'+GH_REPO+'/main/'+GH_FILE+'?t='+Date.now();
+      var dlRes2 = await fetch(rawUrl2);
+      if(!dlRes2.ok) throw new Error('Error leyendo archivo');
+      raw = await dlRes2.json();
     }
   }
   return {expenses: raw.expenses||[], sha: meta.sha};
 }
 
 async function ghWrite(expenses,sha){
-  var content = btoa(unescape(encodeURIComponent(JSON.stringify({expenses:expenses},null,2))));
+  // JSON compacto (sin indentación) para reducir tamaño del archivo
+  var content = btoa(unescape(encodeURIComponent(JSON.stringify({expenses:expenses}))));
   var body = {message:'Gastos '+new Date().toLocaleString('es-CO'),content:content};
   if(sha) body.sha=sha;
   var res = await fetch(GH_API,{method:'PUT',headers:ghH(),body:JSON.stringify(body)});

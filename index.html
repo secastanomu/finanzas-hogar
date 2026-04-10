@@ -495,40 +495,63 @@ function dayOfQ(q, month, year){
 }
 
 // ══════════════════════════════════════════
-// GITHUB READ/WRITE
+// GITHUB READ/WRITE — campos comprimidos
+// i=id, d=date, a=amount, c=category,
+// s=subcategory, t=description, p=person
 // ══════════════════════════════════════════
+
+function compress(exp){
+  return {i:exp.id,d:exp.date,a:exp.amount,c:exp.category,
+          s:exp.subcategory||'',t:exp.description||'',p:exp.person||'p1'};
+}
+function decompress(e){
+  return {id:e.i,date:e.d,amount:e.a,category:e.c,
+          subcategory:e.s||'',description:e.t||'',person:e.p||'p1',
+          createdAt:e.cr||''};
+}
+
 async function ghRead(){
-  // Paso 1: obtener sha del archivo via Contents API
   var res = await fetch(GH_API, {headers:ghH()});
   if(res.status===401) throw new Error('TOKEN_INVALID');
   if(res.status===404){ await ghWrite([],null); return {expenses:[],sha:null}; }
-  if(!res.ok) throw new Error('GitHub '+res.status);
+  if(!res.ok) throw new Error('Error GitHub: '+res.status);
   var meta = await res.json();
 
   var raw;
-  // Paso 2: si content viene vacío (archivo >1MB), usar Git Blobs API
   if(!meta.content || meta.content.trim()==='' || meta.encoding==='none'){
-    var blobUrl = 'https://api.github.com/repos/'+GH_REPO+'/git/blobs/'+meta.sha;
-    var blobRes = await fetch(blobUrl, {headers:ghH()});
+    // Archivo grande: usar Git Blobs API (autenticada, sin límite de tamaño)
+    var blobRes = await fetch(
+      'https://api.github.com/repos/'+GH_REPO+'/git/blobs/'+meta.sha,
+      {headers:ghH()}
+    );
     if(!blobRes.ok) throw new Error('Error blob: '+blobRes.status);
     var blob = await blobRes.json();
-    // Git Blobs devuelve base64 pero en chunks — limpiar y decodificar
-    var b64 = blob.content.replace(/\n/g,'').replace(/\r/g,'');
+    var b64 = blob.content.replace(/[\n\r]/g,'');
     raw = JSON.parse(atob(b64));
   } else {
-    raw = JSON.parse(atob(meta.content.replace(/\n/g,'')));
+    raw = JSON.parse(atob(meta.content.replace(/[\n\r]/g,'')));
   }
-  return {expenses: raw.expenses||[], sha: meta.sha};
+
+  // Soportar tanto formato comprimido ({i,d,a,...}) como expandido ({id,date,...})
+  var expenses = (raw.e || raw.expenses || []).map(function(e){
+    return e.id ? e : decompress(e);
+  });
+  return {expenses: expenses, sha: meta.sha};
 }
 
-async function ghWrite(expenses,sha){
-  // JSON compacto (sin indentación) para reducir tamaño del archivo
-  var content = btoa(unescape(encodeURIComponent(JSON.stringify({expenses:expenses}))));
-  var body = {message:'Gastos '+new Date().toLocaleString('es-CO'),content:content};
-  if(sha) body.sha=sha;
+async function ghWrite(expenses, sha){
+  // Guardar con campos comprimidos: ~85KB en vez de ~1.1MB
+  var compressed = {e: expenses.map(compress)};
+  var json = JSON.stringify(compressed);
+  var content = btoa(unescape(encodeURIComponent(json)));
+  var body = {message:'Gastos '+new Date().toLocaleString('es-CO'), content:content};
+  if(sha) body.sha = sha;
   var res = await fetch(GH_API,{method:'PUT',headers:ghH(),body:JSON.stringify(body)});
   if(res.status===401) throw new Error('TOKEN_INVALID');
-  if(!res.ok){ var e=await res.json().catch(function(){return{};}); throw new Error(e.message||'Error GitHub'); }
+  if(!res.ok){
+    var err = await res.json().catch(function(){return{};});
+    throw new Error(err.message||'Error al guardar');
+  }
   return (await res.json()).content.sha;
 }
 
